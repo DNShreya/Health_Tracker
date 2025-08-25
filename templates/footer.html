@@ -1,0 +1,22 @@
+﻿<footer id="smartFooter" style="position: fixed; bottom: 0; width: 100%; text-align: center; font-weight: bold; padding: 0px 0; background: white; transition: transform 0.3s ease;">
+	All Rights Reserved.
+  </footer>
+  
+  <script>
+	let lastScrollTop = 0;
+	const footer = document.getElementById('smartFooter');
+  
+	window.addEventListener('scroll', function() {
+	  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+	  if (currentScroll > lastScrollTop) {
+		// Scrolling down
+		footer.style.transform = 'translateY(0)';
+	  } else {
+		// Scrolling up
+		footer.style.transform = 'translateY(100%)';
+	  }
+	  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll
+	});
+  </script>
+  

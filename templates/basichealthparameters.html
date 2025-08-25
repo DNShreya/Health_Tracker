@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico">
+
+  <title>Basic Health Parameters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  {% include "style.html" %}
+	{% include "vendor_styles.html" %}
+  {% include "script.html" %}
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="devya-body hold-transition light-skin sidebar-mini theme-primary fixed">
+  <!-- <?php include 'header.php'; ?> -->
+  {% include "header.html" %}
+  <!-- Blood Pressure Section -->
+  <section class="d-section-divider">
+    <div class="container">
+      <h3 class="d-section-title">❤️ Blood Pressure Overview</h3>
+      <div class="row mb-4 g-4">
+        <!-- Column 1: Circular BP Display with Status Label -->
+        <div class="col-md-4 text-center">
+          <div class="d-bp-circle">
+            <span>120/80</span>
+          </div>
+          <p class="mt-2 text-muted">Current Blood Pressure</p>
+          <span class="badge d-status-badge bg-success"
+            title="Your blood pressure is within the normal range.">Normal</span>
+          <div class="progress mt-3" style="height: 10px; width: 70%; margin: auto;">
+            <div class="progress-bar bg-success" style="width: 45%;"></div>
+          </div>
+        </div>
+
+        <!-- Column 2: Systolic & Diastolic Info -->
+        <div class="col-md-4">
+          <h5>📈 Blood Pressure Breakdown</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span>🡅</span> <strong>Systolic (Upper):</strong> 120 mmHg
+            </li>
+            <li class="list-group-item">
+              <span>🡇</span> <strong>Diastolic (Lower):</strong> 80 mmHg
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Interpretation -->
+        <div class="col-md-4">
+          <h5>📊 BP Categories</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Normal:</strong> &lt; 120 / &lt; 80
+            </li>
+            <li class="list-group-item">
+              <strong>Elevated:</strong> 120–129 / &lt; 80
+            </li>
+            <li class="list-group-item">
+              <strong>High BP (Stage 1):</strong> 130–139 / 80–89
+            </li>
+            <li class="list-group-item">
+              <strong>High BP (Stage 2):</strong> ≥ 140 / ≥ 90
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Info + Call to Action -->
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <div class="d-card text-start p-4">
+            <h4>Understanding Blood Pressure</h4>
+            <p>
+              Blood pressure is the force of blood pushing against your artery walls. It's measured with two values:
+            </p>
+            <ul>
+              <li><strong>Systolic:</strong> Pressure during heartbeats.</li>
+              <li><strong>Diastolic:</strong> Pressure between heartbeats.</li>
+            </ul>
+            <p>
+              Keeping your BP within the normal range reduces the risk of heart disease, stroke, and other serious
+              health conditions.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <div class="d-card text-center p-4">
+            <h5>Is Your BP High?</h5>
+            <p class="text-danger mb-3">High blood pressure can be dangerous if left unmanaged.</p>
+            <a href="#" class="btn btn-danger btn-lg">Contact Us Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="d-hr">
+
+  <!-- Diabetes Section -->
+  <section class="d-section-divider">
+    <div class="container">
+      <h3 class="d-section-title">🩺 Diabetes Overview</h3>
+      <div class="row mb-4 g-4">
+        <!-- Column 1: Blood Sugar Circle -->
+        <div class="col-md-4 text-center">
+          <div class="d-bp-circle" style="background: linear-gradient(135deg, #34D399, #6EE7B7);">
+            <span>95 mg/dL</span>
+          </div>
+          <p class="mt-2 text-muted">Fasting Blood Sugar</p>
+          <span class="badge d-status-badge bg-success"
+            title="Your fasting glucose level is within normal range.">Normal</span>
+          <div class="progress mt-3" style="height: 10px; width: 70%; margin: auto;">
+            <div class="progress-bar bg-success" style="width: 40%;"></div>
+          </div>
+        </div>
+
+        <!-- Column 2: Glucose Breakdown -->
+        <div class="col-md-4">
+          <h5>🧪 Blood Sugar Breakdown</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span>🌅</span> <strong>Fasting Glucose:</strong> 95 mg/dL
+            </li>
+            <li class="list-group-item">
+              <span>🍽️</span> <strong>Post-Meal (PPG):</strong> 135 mg/dL
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Sugar Level Categories -->
+        <div class="col-md-4">
+          <h5>📊 Blood Sugar Categories (Fasting)</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Normal:</strong> 70–99 mg/dL
+            </li>
+            <li class="list-group-item">
+              <strong>Prediabetes:</strong> 100–125 mg/dL
+            </li>
+            <li class="list-group-item">
+              <strong>Diabetes:</strong> ≥ 126 mg/dL
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Info d-card + Contact -->
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <div class="d-card text-start p-4">
+            <h4>Understanding Diabetes</h4>
+            <p>
+              Diabetes is a chronic condition that affects how your body turns food into energy. When your blood sugar
+              gets too high, it can damage organs and blood vessels over time.
+            </p>
+            <p>
+              Monitoring your glucose levels regularly helps prevent complications like kidney damage, nerve issues, and
+              vision loss.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <div class="d-card text-center p-4">
+            <h5>Concerned About Your Sugar Levels?</h5>
+            <p class="text-danger mb-3">Uncontrolled blood sugar can lead to severe health risks.</p>
+            <a href="#" class="btn btn-danger btn-lg">Get a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="d-hr">
+  <section class="d-section-divider">
+    <div class="container">
+      <h3 class="d-section-title">🩸 Blood Group Overview</h3>
+      <div class="row mb-4 g-4">
+        <!-- Blood Group Circle -->
+        <div class="col-md-4 text-center">
+          <div class="d-bp-circle" style="background: linear-gradient(135deg, #FBBF24, #F59E0B);">
+            <span>O+</span>
+          </div>
+          <p class="mt-2 text-muted">Your Blood Group</p>
+          <span class="badge d-status-badge bg-success"
+            title="You have the most common and universal donor blood group.">O+</span>
+        </div>
+
+        <!-- Blood Type Info -->
+        <div class="col-md-8">
+          <h5>🧬 Blood Group Types</h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>O+:</strong> Universal Donor for positive blood types.
+            </li>
+            <li class="list-group-item">
+              <strong>A+: </strong> Compatible with A+ and AB+ recipients.
+            </li>
+            <li class="list-group-item">
+              <strong>B+: </strong> Compatible with B+ and AB+ recipients.
+            </li>
+            <li class="list-group-item">
+              <strong>AB+: </strong> Universal Recipient (can receive any blood group).
+            </li>
+            <li class="list-group-item">
+              <strong>O-:</strong> Universal Donor for all blood types (rare).
+            </li>
+            <li class="list-group-item">
+              <strong>AB-:</strong> Rare blood type that can donate to AB+ and AB-.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Info d-card + Call to Action -->
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <div class="d-card text-start p-4">
+            <h4>Why Blood Group Matters</h4>
+            <p>
+              Knowing your blood group is important for medical situations like transfusions, surgeries, or organ
+              donation. It helps ensure compatibility between donor and recipient.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <div class="d-card text-center p-4">
+            <h5>Donate Blood Today!</h5>
+            <p class="text-success mb-3">Your blood donation can save lives. Consider donating regularly.</p>
+            <a href="#" class="btn btn-success btn-lg">Donate Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section>
+  <div class="container"> -->
+  <!-- Blood Pressure -->
+  <!-- <div class="d-card blood-pressure">
+      <div class="d-icon">🩸</div>
+      <h2>Blood Pressure</h2>
+      <div class="circle">120/80</div>
+      <div class="label">Normal Range</div>
+    </div> -->
+
+  <!-- Diabetes -->
+  <!-- <div class="d-card diabetes">
+      <div class="d-icon">🍬</div>
+      <h2>Blood Sugar</h2>
+      <div class="circle">95 mg/dL</div>
+      <div class="label">Fasting Level</div>
+    </div> -->
+
+  <!-- Blood Group -->
+  <!-- <div class="d-card blood-group">
+      <div class="d-icon">🧬</div>
+      <h2>Blood Group</h2>
+      <div class="circle">O+</div>
+      <div class="label">Universal Donor</div>
+    </div>
+  </div>
+  </section> -->
+  <!-- <?php include 'footer.php'; ?>
+  <?php include 'script.php'; ?> -->
+  <script src="{{ url_for('static', filename='js/vendors.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/template.js') }}"></script>
+{% include "footer.html" %}
+<!-- <script>
+  // Check if the user is logged in
+  document.addEventListener("DOMContentLoaded", function() {
+    const userId = localStorage.getItem('user_id');
+    if (!userId) {
+      // If not logged in, redirect to the login page
+      window.location.href = '/login_form';
+    } else {
+      // If logged in, update the buttons in the header
+      updateAuthButtons();
+    }
+  });
+</script> -->
+
+</body>
+
+</html>

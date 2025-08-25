@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .form-container {
+      display: none;
+    }
+    .form-container.active {
+      display: block;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+    }
+    .toggle-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .toggle-link a {
+      color: #4CAF50;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Login -->
+  <div id="loginForm" class="form-container active">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="email" required>
+      <input type="password" id="password" required>
+      <button type="submit">Login</button>
+    </form>
+    
+    
+    
+    <div class="toggle-link">
+      <a onclick="toggleForm('signup')">Don't have an account? Sign up</a>
+    </div>
+  </div>
+
+  <!-- Sign Up -->
+  <div id="signupForm" class="form-container">
+    <h2>Sign Up</h2>
+    <form onsubmit="return signUp()">
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="text" id="signupPhone" placeholder="Phone Number" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+      <select id="signupGender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <label><input type="checkbox" id="signupTerms" required> I agree to the terms</label>
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="toggle-link">
+      <a onclick="toggleForm('login')">Already have an account? Login</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleForm(form) {
+    document.getElementById('loginForm').classList.toggle('active', form === 'login');
+    document.getElementById('signupForm').classList.toggle('active', form === 'signup');
+  }
+
+  function signUp() {
+    const name = document.getElementById("signupName").value;
+    const email = document.getElementById("signupEmail").value;
+    const phone = document.getElementById("signupPhone").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
+    const gender = document.getElementById("signupGender").value;
+    const terms = document.getElementById("signupTerms").checked;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return false;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Check if user already exists
+    if (users.some(user => user.email === email)) {
+      alert("User already exists. Please login.");
+      toggleForm('login');
+      return false;
+    }
+
+    users.push({ name, email, phone, password, gender });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Sign-up successful! Please login.");
+    toggleForm('login');
+    return false;
+  }
+
+  document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const res = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+  sessionStorage.setItem("user_id", data.user.id); // Set the session!
+  alert("Login success");
+  window.location.href = "/dashboard";
+}
+ else {
+    alert(data.message);
+  }
+});
+</script>
+
+</body>
+</html>

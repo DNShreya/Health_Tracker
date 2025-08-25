@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | Doclinic Dashboard</title>
+  {% include "style.html" %}
+	{% include "vendor_styles.html" %}
+	
+  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    .welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 85vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .welcome-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      max-width: 700px;
+      width: 100%;
+    }
+    .welcome-box h1 {
+      font-size: 30px;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .welcome-box p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .welcome-box img {
+      margin-top: 25px;
+      max-width: 180px;
+    }
+  </style>
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	{% include "header.html" %}
+
+  <section class="welcome">
+    <div class="welcome-box">
+      <h1>Welcome to Doclinic</h1>
+      <p>
+        This dashboard is part of the <strong>Multimedia Biometric Health Assessment System</strong>, an innovative platform that integrates <strong>biometric sensors, AI analytics, and multimedia tools</strong> for real-time health monitoring and predictive diagnosis.<br><br>
+        Navigate through to explore intelligent insights, patient vitals, and smart recommendations — all in one unified interface.
+      </p>
+      <img src="https://medical-admin-template.multipurposethemes.com/images/logo-dark-text.png" alt="Doclinic Logo" />
+    </div>
+  </section>
+
+  {% include "footer.html" %}
+  {% include "script.html" %}
+</body>
+</html>

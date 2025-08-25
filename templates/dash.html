@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Health Risk Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  {% include "style.html" %}
+	{% include "vendor_styles.html" %}
+	<!-- {% include "script.html" %} -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      padding: 40px;
+      background: #f7f9fc;
+    }
+    .card {
+      max-width: 600px;
+      margin: auto;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  {% include "header.html" %}
+  <h2 class="text-center mb-5">💊 AI Health Risk Prediction</h2>
+
+  <!-- 🫀 Cardiology Form -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-danger text-white">
+      <h5 class="mb-0">🫀 Cardiology Risk Assessment</h5>
+    </div>
+    <div class="card-body">
+      <form id="cardioForm" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Age</label>
+          <input type="number" name="age" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Systolic BP</label>
+          <input type="number" name="systolic_bp" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Diastolic BP</label>
+          <input type="number" name="diastolic_bp" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Upload ECG Report (optional)</label>
+          <input type="file" name="ecg_file" class="form-control" accept=".pdf,.jpg,.png">
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Analyze Cardiology Risk</button>
+      </form>
+      <div id="cardioResult" class="result text-center mt-3"></div>
+    </div>
+  </div>
+
+  <!-- 🧠 Neurology Form -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">🧠 Neurology Risk Assessment</h5>
+    </div>
+    <div class="card-body">
+      <form id="neuroForm" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Memory Loss (1–10)</label>
+          <input type="number" name="memory_loss" class="form-control" min="1" max="10" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Reaction Time (ms)</label>
+          <input type="number" name="reaction_time" class="form-control" min="50" max="5000" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Upload Brain MRI (optional)</label>
+          <input type="file" name="mri_file" class="form-control" accept=".jpg,.png">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Analyze Neurology Risk</button>
+      </form>
+      <div id="neuroResult" class="result text-center mt-3"></div>
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript Logic -->
+  <script>
+    async function sendForm(formId, endpoint, resultId) {
+      const form = document.getElementById(formId);
+      const resultDiv = document.getElementById(resultId);
+      const formData = new FormData(form);
+
+      resultDiv.innerHTML = "⏳ Loading...";
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: formData
+        });
+
+        const json = await res.json();
+
+        if (json.prediction) {
+          resultDiv.innerHTML = `<div class="alert alert-success">✅ Prediction: ${json.prediction}</div>`;
+        } else if (json.error) {
+          resultDiv.innerHTML = `<div class="alert alert-danger">⚠️ Error: ${json.error}</div>`;
+        } else {
+          resultDiv.innerHTML = `<div class="alert alert-warning">⚠️ Unexpected response from server</div>`;
+        }
+
+      } catch (err) {
+        resultDiv.innerHTML = `<div class="alert alert-danger">❌ Could not connect to backend</div>`;
+        console.error(err);
+      }
+    }
+
+    document.getElementById('cardioForm').addEventListener('submit', e => {
+      e.preventDefault();
+      sendForm('cardioForm', 'http://localhost:5000/predict_cardiology', 'cardioResult');
+    });
+
+    document.getElementById('neuroForm').addEventListener('submit', e => {
+      e.preventDefault();
+      sendForm('neuroForm', 'http://localhost:5000/predict_neurology', 'neuroResult');
+    });
+  </script>
+{% include "footer.html" %}
+</body>
+</html>

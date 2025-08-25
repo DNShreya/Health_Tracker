@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Record</title>
+</head>
+<body>
+    <h2>Medical Record Viewer</h2>
+    <p>This will display the record once the phone sends the UUID.</p>
+    <div id="recordDisplay"></div>
+
+    <script>
+        const eventSource = new EventSource('/stream');
+        eventSource.onmessage = function(event) {
+            document.getElementById('recordDisplay').innerHTML = event.data;
+        };
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Doclinic Dashboard</title>
+  <link rel="icon" href="https://medical-admin-template.multipurposethemes.com/images/favicon.ico" />
+  {% include "style.html" %}
+	{% include "vendor_styles.html" %}
+	{% include "script.html" %}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    .about {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      padding: 40px 20px;
+    }
+    .about-box {
+      background: #fff;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      max-width: 800px;
+      width: 100%;
+    }
+    .about-box h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .about-box p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+  {% include "header.html" %}
+
+  <section class="about">
+    <div class="about-box">
+      <h1>About Doclinic</h1>
+      <p>
+        <strong>Doclinic</strong> is part of the <strong>Multimedia Biometric Health Assessment System</strong>, designed to provide a comprehensive overview of your health. The platform collects real-time biometric data using advanced sensors and provides detailed reports on key health indicators.
+      </p>
+      <p>
+        The system focuses on monitoring and reporting on critical health metrics such as:
+      </p>
+      <ul>
+        <li><strong>Diabetes Check</strong> – Measures glucose levels and flags any abnormalities.</li>
+        <li><strong>Blood Pressure (BP) Monitoring</strong> – Tracks blood pressure levels and provides insights into hypertension risks.</li>
+        <li><strong>Cardiovascular Health</strong> – Monitors heart rate, ECG, and other cardio-related metrics.</li>
+        <li><strong>Neurological Health</strong> – Analyzes brain activity, stress levels, and other neurological indicators.</li>
+      </ul>
+      <p>
+        Through interactive, easy-to-read reports, Doclinic helps both users and healthcare professionals identify potential health risks and take timely action. Whether for personal use or in a medical setting, our platform is designed to promote better health management.
+      </p>
+      <p>
+        By combining accurate biometric data collection with detailed reports, Doclinic empowers users with the knowledge they need to make informed health decisions.
+      </p>
+    </div>
+  </section>
+
+  {% include "footer.html" %}
+</body>
+</html>
